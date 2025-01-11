@@ -1,4 +1,5 @@
-# Kidney Disease Classification with MLflow and DVC
+# Production-grade-Disease-Classifier-with-MLOps
+
 
 This project leverages machine learning to classify kidney disease efficiently, incorporating advanced tools like MLflow for experiment tracking and DVC for lightweight orchestration and pipeline management. Designed for seamless deployment and scalability, this system ensures an efficient and secure environment for data scientists and healthcare professionals.
 
