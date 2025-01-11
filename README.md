@@ -1,6 +1,6 @@
-# AI SaaS application for Advanced Image Transformation
+# Kidney Disease Classification with MLflow and DVC
 
-This application offers advanced AI-driven tools for transforming images, making it easy to restore, recolor, adjust backgrounds, remove objects, and perform a variety of other edits. Crafted for both creative professionals and hobbyists, it ensures a smooth and interactive experience with cutting-edge features. The platform also prioritizes secure transactions and provides highly efficient search capabilities for a comprehensive, user-friendly environment.
+This project leverages machine learning to classify kidney disease efficiently, incorporating advanced tools like MLflow for experiment tracking and DVC for lightweight orchestration and pipeline management. Designed for seamless deployment and scalability, this system ensures an efficient and secure environment for data scientists and healthcare professionals.
 
 ---
 
@@ -10,51 +10,35 @@ This application offers advanced AI-driven tools for transforming images, making
 2. ⚙️ [Tech Stack](#tech-stack)
 3. 🎨 [Features](#features)
 4. 🖥️ [Quick Start](#quick-start)
+5. 📜 [About MLflow & DVC](#mlflow-dvc)
 
 ---
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
-- **Next.js**: Scalable React framework for server-side rendering and static web apps.
-- **TypeScript**: Type-safe and robust JavaScript alternative.
-- **MongoDB**: NoSQL database for flexible data storage.
-- **Clerk**: Comprehensive authentication and user management.
-- **Cloudinary**: Image and video optimization with cloud-based processing.
-- **Stripe**: Secure payment gateway for credit transactions.
-- **Shadcn**: Component framework for fast UI development.
-- **TailwindCSS**: Utility-first CSS for custom and responsive designs.
+- **Python 3.8**: Core language for development and machine learning.
+- **TensorFlow/PyTorch**: Frameworks for model development and training.
+- **MLflow**: Production-grade experiment tracking and model logging.
+- **DVC**: Lightweight experiment tracker and pipeline orchestrator.
+- **Dagshub**: Simplified ML experiment tracking and collaboration platform.
+- **Docker**: Containerization for deployment.
+- **AWS (ECR & EC2)**: Cloud-based infrastructure for scalable model deployment.
 
 ---
 
 ## <a name="features">🎨 Features</a>
 
-🕀 **User Authentication & Authorization**: Safeguard access with multi-factor authentication, role-based permissions, and secure routing.
+🕀 **Experiment Tracking**: Manage and track all experiments with MLflow and DVC.  
 
-🕀 **Community Image Gallery**: Browse user-created transformations with an easy-to-navigate paginated display.
+🕀 **Pipeline Management**: Lightweight orchestration with `dvc.yaml` for modular and reproducible workflows.
 
-🕀 **Smart Image Search**: Leverage AI-powered semantic search to find images based on content or specific objects.
+🕀 **Secure Cloud Deployment**: Integration with AWS services like EC2 and ECR for reliable deployment.
 
-🕀 **Image Restoration**: Advanced tools to repair and restore aged or damaged images.
+🕀 **Data Version Control**: Maintain reproducibility with DVC for datasets and experiments.
 
-🕀 **Color Adjustment**: Effortlessly modify or replace colors of objects with high accuracy.
+🕀 **Dockerized Deployment**: Ensure portability with Docker containers.
 
-🕀 **AI-Driven Fill**: Automatically fill missing or incomplete areas of images using advanced generative techniques.
-
-🕀 **Object & Background Removal**: User-friendly tools to easily erase unwanted elements from images.
-
-🕀 **Download Transformed Images**: Simple and quick options to save or share edited images.
-
-🕀 **Transformation History & Insights**: Access detailed records and metadata of every transformation performed.
-
-🕀 **Manage Transformations**: Easily update or delete any image transformations as needed.
-
-🕀 **Credit System**: Earn or purchase credits to use for various transformation features.
-
-🕀 **Profile Dashboard**: A centralized interface to manage credits, images, and account preferences.
-
-🕀 **Secure Payment Processing**: Transactions powered by Stripe for secure, compliant payment handling.
-
-🕀 **Mobile-Friendly Design**: Optimized for smooth, consistent performance on all devices.
+🕀 **User-Friendly Environment**: Simplified setup and configuration for seamless adoption.
 
 ---
 
@@ -65,53 +49,46 @@ This application offers advanced AI-driven tools for transforming images, making
 Ensure the following are installed on your system:
 
 - [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager)
+- [Conda](https://docs.conda.io/projects/conda/en/latest/index.html)
+- [Python 3.8](https://www.python.org/downloads/)
+- [MLflow](https://mlflow.org/)
+- [DVC](https://dvc.org/)
+- [Docker](https://www.docker.com/)
 
 ### **Installation**
 
-Install project dependencies:
-
+#### Step 1: Clone the Repository
 ```bash
-npm install
+git clone https://github.com/krishnaik06/Kidney-Disease-Classification-Deep-Learning-Project
 ```
 
-### **Set Up Environment Variables**
+#### Step 2: Create a Conda Environment
+````bash
+conda create -n cnncls python=3.8 -y
+conda activate cnncls
+````
 
-Create a `.env.local` file in the root directory and configure it as follows:
+#### Step 3: Install Requirements
+````bash
+pip install -r requirements.txt
+````
 
-```env
-# NEXT.js Configuration
-NEXT_PUBLIC_SERVER_URL=
+#### Step 4: Create a .env file in the root directory and add:
+````bash
+# MLflow Configuration
+MLFLOW_TRACKING_URI=
+MLFLOW_TRACKING_USERNAME=
+MLFLOW_TRACKING_PASSWORD=
 
-# MongoDB Configuration
-MONGODB_URL=
+# AWS Configuration
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_REGION=us-east-1
+AWS_ECR_LOGIN_URI=
+ECR_REPOSITORY_NAME=
+````
 
-# Clerk Configuration
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
-CLERK_SECRET_KEY=
-WEBHOOK_SECRET=
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
-
-# Cloudinary Configuration
-NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
-CLOUDINARY_API_KEY=
-CLOUDINARY_API_SECRET=
-
-# Stripe Configuration
-STRIPE_SECRET_KEY=
-STRIPE_WEBHOOK_SECRET=
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
-```
-
-Replace placeholders with your actual credentials from [Clerk](https://clerk.com/), [MongoDB](https://www.mongodb.com/), [Cloudinary](https://cloudinary.com/), and [Stripe](https://stripe.com).
-
-### **Running the Project**
-
-Start the development server:
-
-```bash
-npm run dev
+#### Step 5: Run the Application
+````bash
+python app.py
+````
